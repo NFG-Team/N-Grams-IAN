@@ -6,7 +6,7 @@ import pandas as pd
 
 # Define the app
 def main():
-    st.title("N-Gram Language Model Playground")
+    st.title("Playground Trabajo N-Gramas")
     st.markdown(
         """
         Integrantes: 
@@ -18,9 +18,9 @@ def main():
     )
 
     # Sidebar for file selection
-    st.sidebar.header("Configuration")
+    st.sidebar.header("Configuracion")
     text_file = st.sidebar.selectbox(
-        "Choose a text file to train the model:",
+        "Seleccionar el archivo de texto:",
         ("frankenstein.txt", "alice_in_wonderland.txt", "don_quixote.txt"),
     )
 
@@ -293,10 +293,10 @@ def main():
         )
 
     with tab2:
-        st.header("Predict the Next N Words")
+        st.header("Generación de Texto con N-gramas")
 
         n_gram_size = st.slider(  # Slider for N-gram size
-            "Choose the N for the N-gram:",
+            "Elegir el tamaño del N-grama:",
             min_value=2,
             max_value=5,
             value=3,
@@ -305,40 +305,40 @@ def main():
         )
 
         # Dropdown for recommended phrases
-        st.subheader("Try one of these recommended phrases:")
+        st.subheader("Proba las siguientes frases:")
 
         # Text input for user-provided context
         context_input = st.selectbox(
-            "Recommended Phrases:",
+            "Elegir contexto:",
             phrase_recommendations[text_file],
             key="context_input_tab2",
         )
         # Number of words to predict
         n = st.number_input(
-            "Enter the number of words to predict (N):",
+            "Cantidad de palabras a generar (N):",
             min_value=1,
             step=1,
             max_value=20,
             value=5,
         )
 
-        if st.button("Predict"):
+        if st.button("Generar Texto"):
             # Train the model based on selected N-gram size
             lm = NGramLM(N=n_gram_size)
             lm.train(vocab, data)
             if context_input:
                 # Display the input context
                 st.markdown(
-                    f"Input Context:  <span style='color: #FF6347;'>{context_input}</span>",
+                    f"Contexto Elegido:  <span style='color: #FF6347;'>{context_input}</span>",
                     unsafe_allow_html=True,
                 )
 
                 output = lm.generate_next_n(context_input, int(n))
 
-                st.write("Generated Text:")
+                st.write("Texto Generado:")
                 st.code("".join(output), language="text")
             else:
-                st.warning("Please enter a valid context.")
+                st.warning("Por favor, selecciona un contexto para generar texto.")
 
     with tab3:
 
@@ -360,25 +360,27 @@ def main():
             else:
                 return None
 
-        st.header("Next Word Probability Prediction")
+        st.header("Visualización de Probabilidades de Palabras")
 
         # Model parameters
-        n_gram = st.slider("Select N-gram size", min_value=2, max_value=5, value=3)
+        n_gram = st.slider(
+            "Elegir el tamaño del N-grama:", min_value=2, max_value=5, value=3
+        )
 
         input_text = st.selectbox(
-            "Recommended Phrases:",
+            "Elegir un contexto:",
             phrase_recommendations[text_file],
             key="input_text_tab3",
         )
 
-        if st.button("Generate Probabilities"):
+        if st.button("Mostrar Probabilidades"):
             # Initialize model
             model = NGramLM(N=n_gram)
             model.train(vocab, data)
             df = get_next_word_probabilities(model, input_text)
             if df is not None:
-                st.write(f"Context: '{input_text}'")
-                st.write("Probability Distribution of Next Words:")
+                st.write(f"Contexto: '{input_text}'")
+                st.write("Distribución de Probabilidades:")
 
                 # Create Altair chart with Streamlit's red color
                 chart = (
@@ -397,7 +399,7 @@ def main():
                 st.altair_chart(chart, use_container_width=True)
             else:
                 st.error(
-                    "Context not found in the training data. Try a different input."
+                    "Contexto no encontrado en el modelo. Por favor, elige otro contexto."
                 )
 
 
