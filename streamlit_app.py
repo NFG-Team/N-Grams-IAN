@@ -62,6 +62,10 @@ def main():
             """
             # Trabajo Práctico: Modelo de N-gramas
 
+            > **Nota**: Este informe detalla el análisis y evaluación realizados originalmente con el libro "Frankenstein". 
+            > Para la demostración interactiva de esta aplicación, agregamos dos mas opciones: 
+            > "Alice in Wonderland" y "Don Quixote"
+
             ## Índice
             1. [Preparación del Corpus](#1-preparación-del-corpus)
                 - Obtención y limpieza
@@ -108,9 +112,9 @@ def main():
             - Parámetros para especificar N (tamaño del n-grama)
             - Opción de smoothing con parámetro k
             - Estructuras de datos para almacenar:
-            - Vocabulario
-            - Probabilidades
-            - Frecuencias
+                - Vocabulario
+                - Probabilidades
+                - Frecuencias
 
             #### Métodos Principales
 
@@ -137,9 +141,9 @@ def main():
             Se implementó un sistema de evaluación que:
             - Entrena modelos con diferentes valores de N (2,3,4,5)
             - Calcula perplexity en conjuntos de:
-            - Entrenamiento
-            - Validación
-            - Testing
+                - Entrenamiento
+                - Validación
+                - Testing
             - Compara resultados entre diferentes tamaños de n-gramas
 
             ## 3. Análisis de Resultados
@@ -218,6 +222,7 @@ def main():
                 * Genera una narrativa compleja y coherente, manteniendo el estilo del texto original
 
             Estos ejemplos ilustran claramente cómo:
+            
                 - Los bigramas tienden a caer en loops repetitivos o terminar prematuramente
                 - Los trigramas pueden generar contenido más extenso pero a veces pierden coherencia
                 - Los 4-gramas producen el mejor balance entre coherencia y naturalidad, generando oraciones que podrían pasar por fragmentos del texto original
@@ -263,7 +268,6 @@ def main():
                 - Trigramas (n=3): Exhiben mayor variabilidad creativa, generando combinaciones más interesantes
                 - 4-gramas (n=4): Logran el mejor balance entre creatividad y coherencia
 
-            - *Manifestaciones de Creatividad*:
             - *Combinaciones Contextuales*: 
                 - Ejemplo con trigrama: "the night on which the murder of poor william"
                 - Combina elementos narrativos del texto original de formas nuevas pero coherentes
@@ -288,7 +292,7 @@ def main():
                 - Puede generar texto gramaticalmente correcto en fragmentos cortos
                 - Mantiene el estilo del autor en n-gramas altos
 
-            En conclusión, mientras que el modelo muestra capacidad para generar texto coherente a nivel local, especialmente con n-gramas más altos, carece de verdadera comprensión o creatividad. Su "inteligencia" se limita a patrones estadísticos aprendidos del texto de entrenamiento, lo que resulta efectivo para generar fragmentos cortos pero muestra limitaciones significativas en la generación de contenido verdaderamente original o coherente a largo plazo
+            En conclusión, aunque el modelo demuestra una capacidad notable para generar secuencias cortas de palabras con sentido gramatical y semántico dentro de un contexto inmediato, especialmente al utilizar n-gramas más altos, carece de verdadera comprensión o creatividad. Su ‘inteligencia’ se limita a patrones estadísticos aprendidos del texto de entrenamiento, lo que lo hace efectivo para producir fragmentos breves, pero revela limitaciones significativas al intentar generar textos más extensos y coherentes.
                 """
         )
 
