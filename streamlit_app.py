@@ -7,6 +7,15 @@ import pandas as pd
 # Define the app
 def main():
     st.title("N-Gram Language Model Playground")
+    st.markdown(
+        """
+        Integrantes: 
+            <a href="https://github.com/nicocanta20" style="color: #FF6347;" target="_blank">Nicolás Cantarovici</a>
+            <a href="https://github.com/florianreyes" style="color: #FF6347;" target="_blank">Florian Reyes</a>
+            <a href="https://github.com/gonzaslucki" style="color: #FF6347;" target="_blank">Gonzalo Slucki</a>
+        """,
+        unsafe_allow_html=True,
+    )
 
     # Sidebar for file selection
     st.sidebar.header("Configuration")
@@ -23,7 +32,8 @@ def main():
         "frankenstein.txt": [
             "the night",
             "i saw",
-            "my thought" "the monster",
+            "my thought",
+            "the monster",
             "the creature",
         ],
         "alice_in_wonderland.txt": [
@@ -300,7 +310,8 @@ def main():
         # Text input for user-provided context
         context_input = st.selectbox(
             "Recommended Phrases:",
-            [""] + phrase_recommendations[text_file],  # Add an empty default option
+            phrase_recommendations[text_file],
+            key="context_input_tab2",
         )
         # Number of words to predict
         n = st.number_input(
@@ -354,8 +365,11 @@ def main():
         # Model parameters
         n_gram = st.slider("Select N-gram size", min_value=2, max_value=5, value=3)
 
-        # Input text
-        input_text = st.text_input("Enter a sentence:", "the monster")
+        input_text = st.selectbox(
+            "Recommended Phrases:",
+            phrase_recommendations[text_file],
+            key="input_text_tab3",
+        )
 
         if st.button("Generate Probabilities"):
             # Initialize model
