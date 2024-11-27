@@ -110,7 +110,6 @@ def main():
 
             #### Inicialización
             - Parámetros para especificar N (tamaño del n-grama)
-            - Opción de smoothing con parámetro k
             - Estructuras de datos para almacenar:
                 - Vocabulario
                 - Probabilidades
@@ -223,9 +222,9 @@ def main():
 
             Estos ejemplos ilustran claramente cómo:
             
-                - Los bigramas tienden a caer en loops repetitivos o terminar prematuramente
-                - Los trigramas pueden generar contenido más extenso pero a veces pierden coherencia
-                - Los 4-gramas producen el mejor balance entre coherencia y naturalidad, generando oraciones que podrían pasar por fragmentos del texto original
+            - Los bigramas tienden a caer en loops repetitivos o terminar prematuramente
+            - Los trigramas pueden generar contenido más extenso pero a veces pierden coherencia
+            - Los 4-gramas producen el mejor balance entre coherencia y naturalidad, generando oraciones que podrían pasar por fragmentos del texto original
 
             ### 3.2 Similitud con Textos Originales
 
@@ -257,7 +256,7 @@ def main():
 
             Es importante notar que nuestro proceso de lematización tuvo algunos efectos interesantes:
                 - Transformó palabras plurales a singular, lo que a veces altera la naturalidad del texto (ej: "thoughts" → "thought")
-                - Detectamos un comportamiento inesperado donde "was" se transformaba a "wa", lo cual nos pareció un error en el proceso de lematización
+                - Detectamos un comportamiento inesperado donde "was" se transformaba a "wa", lo cual nos pareció un error en el proceso de lematización.
                 - Estas transformaciones afectan la comparación directa con el texto original, pero mantienen la coherencia semántica
 
             ### 3.3 Creatividad e Inteligencia
